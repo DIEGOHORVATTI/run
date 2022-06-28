@@ -62,7 +62,7 @@ for i in "$@"; do
 				echo -e "│                                       │"
 				echo -e "│      Create directory:   ./.exe      │"
 				echo -e "│                                       │"
-			  echo -e "└───────────────────────────────────────┘"
+				echo -e "└───────────────────────────────────────┘"
 				echo -e "\n"
 				else
 					# verificar que a flag é uma pasta e printa seu conteúdo
