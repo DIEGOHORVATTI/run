@@ -53,49 +53,37 @@ for i in "$@"; do
 			echo -e "\n"
 		;;
 		*)
-			# verificar de a pasta ./exe exite caso não, criar
-			if [ ! -d ./.exe ];then
-				mkdir ./.exe
-				clear
+			# verificar que a flag é uma pasta e printa seu conteúdo
+			if [ -d $i ];then
 				echo -e "\n"
-				echo -e "┌───────────────────────────────────────┐"
-				echo -e "│                                       │"
-				echo -e "│      Create directory:   ./.exe      │"
-				echo -e "│                                       │"
-				echo -e "└───────────────────────────────────────┘"
+				echo -e "┌───────────────────────────────────────"
+				echo -e "│                                       "
+				echo -e "│  Directory> $i"
+				echo -e "│                                       "
+				echo -e "└───────────────────────────────────────"
+				colorls --group-directories-first --almost-all 
 				echo -e "\n"
+				# verificar que o arquivo alvo foi achado e o executa
+				elif [ -f $i ]; then
+					clear && 
+					cppcheck ./$i && 
+					echo -e "\n───────────────────────────────────────\n" && 
+					gcc ./$i -o /tmp/run.exe && 
+					/tmp/run.exe && 
+					echo -e "\n\n───────────────────────────────────────\n"
 				else
-					# verificar que a flag é uma pasta e printa seu conteúdo
-					if [ -d $i ];then
-						echo -e "\n"
-						echo -e "┌───────────────────────────────────────"
-						echo -e "│                                       "
-						echo -e "│  Directory> $i"
-						echo -e "│                                       "
-						echo -e "└───────────────────────────────────────"
-						colorls --group-directories-first --almost-all 
-						echo -e "\n"
-						# verificar que o arquivo alvo foi achado e o executa
-						elif [ -f $i ]; then
-							cppcheck ./$i && 
-							echo -e "\n───────────────────────────────────────\n" && 
-							gcc ./$i -o ./.exe/run.exe && 
-							./.exe/run.exe && 
-							echo -e "\n\n───────────────────────────────────────\n"
-						else
-						# verificar que a flag usada não é nem arquivo em diretório e printa o conteúdo
-						echo -e "\n"
-						echo -e "┌───────────────────────────────────────"
-						echo -e "│                                       "
-						echo -e "│    Arquivo ou diretório inexistente   "
-						echo -e "│                                       "
-						echo -e "│    Erro: $i"  
-						echo -e "│                                       "
-						echo -e "└───────────────────────────────────────"
-						echo -e "\n"
-						colorls --group-directories-first --almost-all
-						echo -e "\n"
-					fi
+				# verificar que a flag usada não é nem arquivo em diretório e printa o conteúdo
+				echo -e "\n"
+				echo -e "┌───────────────────────────────────────"
+				echo -e "│                                       "
+				echo -e "│    Arquivo ou diretório inexistente   "
+				echo -e "│                                       "
+				echo -e "│    Erro: $i"  
+				echo -e "│                                       "
+				echo -e "└───────────────────────────────────────"
+				echo -e "\n"
+				colorls --group-directories-first --almost-all
+				echo -e "\n"
 			fi
 		;;
 	esac
