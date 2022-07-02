@@ -47,8 +47,8 @@ function gitgnore_f(){
 function creat_file_f(){
 	read -p ' New file: ' nome
 	echo -e "\n"
-	wget https://gist.githubusercontent.com/DIEGOHORVATTI/f1272263f3db0118f2d5d5bb3df0de8d/raw/71a598a9e538f4986527a10632db485dc36aed7c/min.c -O $nome.c
-	code $nome.c
+	wget https://gist.githubusercontent.com/DIEGOHORVATTI/f1272263f3db0118f2d5d5bb3df0de8d/raw/71a598a9e538f4986527a10632db485dc36aed7c/min.c -O $nome
+	code $nome
 	clear
 }
 
