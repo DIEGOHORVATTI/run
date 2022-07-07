@@ -47,7 +47,7 @@ function gitgnore_f(){
 function creat_file_f(){
 	read -p ' New file: ' nome
 	echo -e "\n"
-	wget https://gist.githubusercontent.com/DIEGOHORVATTI/f1272263f3db0118f2d5d5bb3df0de8d/raw/71a598a9e538f4986527a10632db485dc36aed7c/min.c -O $nome
+	wget https://gist.githubusercontent.com/DIEGOHORVATTI/f1272263f3db0118f2d5d5bb3df0de8d/raw/ad09444126da9bb50bdd98b62cf5957f5feb895d/min.c -O $nome
 	code $nome
 	clear
 }
@@ -81,7 +81,7 @@ for i in "$@"; do
 				# verificar que o arquivo alvo foi achado e o executa
 				elif [ -f $i ]; then
 					clear && 
-					cppcheck ./$i && 
+					#cppcheck ./$i && 
 					echo -e "\n───────────────────────────────────────\n" && 
 					g++ ./$1 -o /tmp/run.exe && 
 					/tmp/run.exe && 
@@ -99,7 +99,7 @@ for i in "$@"; do
 					echo -e "\n"
 					colorls --group-directories-first --almost-all
 					echo -e "\n"
-					read -p ' Create New file?[S/s,N/n]: ' quest
+					read -p ' Create New file[S/s][N/n]: ' quest
 					case $quest in
 						"s" | "S")
 							creat_file_f
