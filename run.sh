@@ -68,13 +68,11 @@ function f_gitAll(){
 
 function f_git_read(){
 	read -p ' New commit: ' git
-	while :; do
-		git branch -M main && 
-		git add . && 
-		git commit -m "$git" && 
-		git push -u origin main &&
-		clear 
-	done
+	git branch -M main && 
+	git add . && 
+	git commit -m "$git" && 
+	git push -u origin main &&
+	clear 
 }
 
 for i in "$@"; do
