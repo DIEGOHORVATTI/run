@@ -60,7 +60,7 @@ function f_gitAll(){
 		git push -u origin main &&
 		clear &&
 		for ((i=10; i >= 0; i--)); do       
-			echo -e "\n\033[0;34m🕗 $(($i))m\033 \033[1;32m $(date +'[%d/%m/%Y] [%H:%M] { %j }')\033[0m"
+			echo -e "\n\033[0;34m🕗 $(($i))m\033 \033[1;32m $(date +'[%d/%m/%Y] [%H:%M] { %A }')\033[0m"
 			sleep 1m 
 		done
 	done
