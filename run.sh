@@ -73,7 +73,7 @@ function f_git_read(){
 	git commit -m "$git" && 
 	git push -u origin main &&
 	clear &&
-	echo -e "\n\033[0;34m ✓✓:\033 $git \n"
+	echo -e "\n\033[0;34m ✓✓: m\033 $git \n"
 }
 
 for i in "$@"; do
