@@ -52,6 +52,31 @@ function creat_file_f(){
 	clear
 }
 
+function f_gitAll(){
+	while :; do
+		git branch -M main && 
+		git add . && 
+		git commit -m "$(date +'[%d/%m/%Y] [%H:%M] -- {%j, %A}')" && 
+		git push -u origin main &&
+		clear &&
+		for ((i=10; i >= 0; i--)); do       
+			echo -e "\n\033[0;34m🕗 $(($i))m\033 \033[1;32m $(date +'[%d/%m/%Y] [%H:%M] { %j }')\033[0m "
+			sleep 1m 
+		done
+	done
+}
+
+function f_git_read(){
+	read -p ' New commit: ' git
+	while :; do
+		git branch -M main && 
+		git add . && 
+		git commit -m "$git" && 
+		git push -u origin main &&
+		clear 
+	done
+}
+
 for i in "$@"; do
 	case $i in
 	"" | -v | --version) 
@@ -64,8 +89,14 @@ for i in "$@"; do
 		-c | --create-file)
 			creat_file_f
 		;;
-		-g | --gitgnore)
-		gitgnore_f
+		--gitgnore)
+			gitgnore_f
+		;;
+		--git)
+			f_git_read
+		;;
+		-git-date)
+			f_gitAll
 		;;
 		*)
 			# verificar que a flag é uma pasta e printa seu conteúdo
@@ -83,8 +114,7 @@ for i in "$@"; do
 					clear && 
 					#cppcheck ./$i && 
 					echo -e "\n───────────────────────────────────────\n" && 
-					g++ ./$1 -o /tmp/run.exe && 
-					/tmp/run.exe && 
+					gcc ./$1 -o /tmp/run.exe && /tmp/run.exe && 
 					echo -e "\n\n───────────────────────────────────────\n"
 				else
 					# verificar que a flag usada não é nem arquivo em diretório e printa o conteúdo
