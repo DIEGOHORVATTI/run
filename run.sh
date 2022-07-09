@@ -73,7 +73,7 @@ function f_git_read(){
 	git commit -m "$git" && 
 	git push -u origin main &&
 	clear &&
-	echo -e "\n\033[0;34m Atualizado: $gitm\033\n"
+	echo -e "\n\033[0;34m Atualizado: $git m\033\n"
 }
 
 for i in "$@"; do
